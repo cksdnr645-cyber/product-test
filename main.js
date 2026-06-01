@@ -56,13 +56,13 @@ class ThemeToggle extends HTMLElement {
   }
 
   render() {
-    this.innerHTML = \`
+    this.innerHTML = `
       <div class="theme-toggle-container">
         <button class="toggle-btn">
-          \${this.isDark ? '☀️ 라이트 모드' : '🌙 다크 모드'}
+          ${this.isDark ? '☀️ 라이트 모드' : '🌙 다크 모드'}
         </button>
       </div>
-    \`;
+    `;
     const btn = this.querySelector('button');
     if (btn) {
       btn.addEventListener('click', () => this.toggle());
