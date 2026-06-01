@@ -1,29 +1,29 @@
-// Masterpieces Collection
-const masterpieces = [
+// Cute Dog Photos Collection
+const dogPhotos = [
   { 
-    title: "별이 빛나는 밤 (The Starry Night)", 
-    artist: "빈센트 반 고흐", 
-    url: "https://images.unsplash.com/photo-1541450805268-4822a3a774ca?auto=format&fit=crop&q=80&w=2070" 
+    title: "골든 리트리버", 
+    description: "미소 짓는 귀여운 리트리버", 
+    url: "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&q=80&w=2024" 
   },
   { 
-    title: "진주 귀걸이를 한 소녀 (Girl with a Pearl Earring)", 
-    artist: "요하네스 페르메이르", 
-    url: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=1945" 
+    title: "시바견", 
+    description: "초원을 달리는 시바견", 
+    url: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=2069" 
   },
   { 
-    title: "기억의 지속 (The Persistence of Memory)", 
-    artist: "살바도르 달리", 
-    url: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&q=80&w=2038" 
+    title: "포메라니안", 
+    description: "솜사탕 같은 포메라니안", 
+    url: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=1964" 
   },
   { 
-    title: "모나리자 (Mona Lisa)", 
-    artist: "레오나르도 다 빈치", 
-    url: "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80&w=2070" 
+    title: "비숑 프리제", 
+    description: "깜찍한 비숑", 
+    url: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=2071" 
   },
   { 
-    title: "키스 (The Kiss)", 
-    artist: "구스타프 클림트", 
-    url: "https://images.unsplash.com/photo-1576132704106-917ecbd0e64c?auto=format&fit=crop&q=80&w=1974" 
+    title: "닥스훈트", 
+    description: "귀여운 소시지 강아지", 
+    url: "https://images.unsplash.com/photo-1612195583950-b8fd34c87093?auto=format&fit=crop&q=80&w=2070" 
   }
 ];
 
@@ -66,11 +66,11 @@ if (generateButton) {
 function initBackground() {
   const overlay = document.getElementById('background-overlay');
   const info = document.getElementById('painting-info');
-  const randomArt = masterpieces[Math.floor(Math.random() * masterpieces.length)];
+  const randomDog = dogPhotos[Math.floor(Math.random() * dogPhotos.length)];
   
   if (overlay) {
-    overlay.style.backgroundImage = 'url("' + randomArt.url + '")';
-    info.textContent = randomArt.title + ' - ' + randomArt.artist;
+    overlay.style.backgroundImage = 'url("' + randomDog.url + '")';
+    info.textContent = '🐶 ' + randomDog.title + ' - ' + randomDog.description;
   }
 }
 
