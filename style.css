@@ -1,3 +1,21 @@
+:root {
+  --bg-color: #f0f2f5;
+  --text-color: #333;
+  --primary-color: #4CAF50;
+  --secondary-color: #f44336;
+  --card-bg: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-color: #f0f2f5;
+  --primary-color: #81c784;
+  --secondary-color: #e57373;
+  --card-bg: #2d2d2d;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
 body {
   font-family: 'Arial', sans-serif;
   display: flex;
@@ -5,14 +23,15 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #f0f2f5;
+  background-color: var(--bg-color);
   margin: 0;
-  color: #333;
+  color: var(--text-color);
   text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1 {
-  color: #4CAF50;
+  color: var(--primary-color);
   margin-bottom: 30px;
 }
 
@@ -23,7 +42,7 @@ h1 {
   margin-top: 20px;
   margin-bottom: 30px;
   width: 100%;
-  max-width: 600px; /* Limit width for better readability */
+  max-width: 600px;
 }
 
 .lotto-number {
@@ -34,37 +53,60 @@ h1 {
   height: 50px;
   margin: 8px;
   border-radius: 50%;
-  background-color: #4CAF50; /* Lottery green */
+  background-color: var(--primary-color);
   color: white;
   font-size: 1.2em;
   font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  transition: transform 0.2s ease-in-out, background-color 0.3s ease;
 }
 
 .lotto-number:hover {
   transform: scale(1.1);
-  background-color: #45a049; /* Darker green on hover */
+  filter: brightness(1.1);
 }
 
 #generate-button {
   padding: 12px 25px;
   font-size: 1em;
   color: white;
-  background-color: #f44336; /* Red for emphasis */
+  background-color: var(--secondary-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px var(--shadow-color);
 }
 
 #generate-button:hover {
-  background-color: #e53935; /* Darker red on hover */
+  filter: brightness(1.1);
   transform: translateY(-2px);
 }
 
 #generate-button:active {
   transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Theme Toggle Component Styles */
+.theme-toggle-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.toggle-btn {
+  background: var(--card-bg);
+  border: 1px solid var(--primary-color);
+  color: var(--text-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background: var(--primary-color);
+  color: white;
 }
