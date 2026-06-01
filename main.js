@@ -74,6 +74,49 @@ function initBackground() {
   }
 }
 
+// Comment System (Local Memory for now, as no Firebase Config provided yet)
+const commentList = document.getElementById('comment-list');
+const commentNameInput = document.getElementById('comment-name');
+const commentTextInput = document.getElementById('comment-text');
+const submitCommentBtn = document.getElementById('submit-comment');
+
+let comments = JSON.parse(localStorage.getItem('lotto_comments') || '[]');
+
+function renderComments() {
+  if (!commentList) return;
+  commentList.innerHTML = '';
+  comments.forEach(comment => {
+    const item = document.createElement('div');
+    item.classList.add('comment-item');
+    item.innerHTML = '<span class="name">' + comment.name + '</span>' +
+                    '<span class="text">' + comment.text + '</span>';
+    commentList.appendChild(item);
+  });
+  commentList.scrollTop = commentList.scrollHeight;
+}
+
+function addComment() {
+  const name = commentNameInput.value.trim();
+  const text = commentTextInput.value.trim();
+  
+  if (!name || !text) return;
+  
+  const newComment = { name, text, date: new Date().toISOString() };
+  comments.push(newComment);
+  localStorage.setItem('lotto_comments', JSON.stringify(comments));
+  
+  commentNameInput.value = '';
+  commentTextInput.value = '';
+  renderComments();
+}
+
+if (submitCommentBtn) {
+  submitCommentBtn.addEventListener('click', addComment);
+  commentTextInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') addComment();
+  });
+}
+
 // Theme Toggle Web Component
 class ThemeToggle extends HTMLElement {
   constructor() {
@@ -114,4 +157,7 @@ class ThemeToggle extends HTMLElement {
 customElements.define('theme-toggle', ThemeToggle);
 
 // Initialize on load
-document.addEventListener('DOMContentLoaded', initBackground);
+document.addEventListener('DOMContentLoaded', () => {
+  initBackground();
+  renderComments();
+});
